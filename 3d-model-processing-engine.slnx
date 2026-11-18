@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="3d-model-processing-engine.vcxproj" />
+  <Project Path="3d-model-processing-engine.vcxproj" Id="1dba3d4c-d85c-4838-8be3-b95cf4764a1f" />
 </Solution>
