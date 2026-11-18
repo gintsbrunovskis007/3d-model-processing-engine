@@ -15,8 +15,10 @@ public:
 		vertices.push_back(vertex);
 	}
 	void addTriangle(int a, int b, int c) {
-		Triangle triangle = { a, b, c };
-		triangles.push_back(triangle);
+		if (a >= 0 && b >= 0 && c >= 0 && a < vertices.size() && b < vertices.size() && c < vertices.size()) {
+			Triangle triangle = { a, b, c };
+			triangles.push_back(triangle);
+		}
 	}
 
 	const Vertex& getVertex(size_t index) const {
