@@ -26,4 +26,25 @@ public:
 	const Triangle& getTriangle(size_t index) const {
 		return triangles.at(index);
 	}
+
+	void printVertices() const {
+		for (const Vertex& vertex : vertices) {
+			std::cout << vertex.x << ", " << vertex.y << ", " << vertex.z << ". " << std::endl;
+		}
+	}
+
+	void printTriangles() const {
+		for (const Triangle& triangle : triangles) {
+			std::cout << triangle.a << ", " << triangle.b << ", " << triangle.c << ". " << std::endl;
+		}
+	}
+
+	const std::vector<Vertex>& getVertices() const {
+		return vertices;
+	}
+
+	const std::vector<Triangle>& getTriangles() const{
+		return triangles;
+	}
+
 };
