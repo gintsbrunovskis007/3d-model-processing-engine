@@ -49,4 +49,27 @@ public:
 		return triangles;
 	}
 
+	Vertex getCenter() const {
+
+		if (vertices.empty()) {
+			return { 0.0f, 0.0f, 0.0f };
+		}
+
+		float x_count = 0.0f;
+		float y_count = 0.0f;
+		float z_count = 0.0f;
+		for (const Vertex& vertex : vertices) {
+			x_count += vertex.x;
+			y_count += vertex.y;
+			z_count += vertex.z;
+		}
+
+		Vertex center;
+		center.x = x_count / vertices.size();
+		center.y = y_count / vertices.size();
+		center.z = z_count / vertices.size();
+
+		return center;
+	}
+
 };

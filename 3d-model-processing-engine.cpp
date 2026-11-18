@@ -19,15 +19,11 @@ int main()
 	mesh.addTriangle(0, 1, 2);
 	mesh.addTriangle(3, 4, 5);
 
-	//mesh.printVertices();
-	//mesh.printTriangles();
+	Vertex center = mesh.getCenter();
 
-	for (const Vertex& vertex : mesh.getVertices()) {
-		std::cout << vertex.x << ", " << vertex.y << ", " << vertex.z << ". " << std::endl;
-	}
-
-	for (const Triangle& triangle : mesh.getTriangles()) {
-		std::cout << triangle.a << ", " << triangle.b << ", " << triangle.c << ". " << std::endl;
-	}
-
+	std::cout << "Center: "
+		<< center.x << ", "
+		<< center.y << ", "
+		<< center.z << '\n';
+		
 }
