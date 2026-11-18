@@ -3,6 +3,10 @@
 #include <vector>
 #include "Vertex.h"
 #include "Triangle.h"
+#include "BoundingBox.h"
+#include <algorithm>
+#include <limits>
+
 
 class Mesh {
 private:
@@ -70,6 +74,77 @@ public:
 		center.z = z_count / vertices.size();
 
 		return center;
+	}
+
+	//BoundingBox getBoundingBox() const{
+
+	//	float minX = 0.0f;
+	//	float minY = 0.0f;
+	//	float minZ = 0.0f;
+
+	//	float maxX = 0.0f;
+	//	float maxY = 0.0f;
+	//	float maxZ = 0.0f;
+
+	//	for (const Vertex& vertex : vertices) {
+	//		if (vertex.x < minX) {
+	//			minX = vertex.x;
+	//		} 
+	//		if (vertex.y < minY) {
+	//			minY = vertex.y;
+	//		}
+	//		if (vertex.z < minZ) {
+	//			minZ = vertex.z;
+	//		}
+
+	//		if (vertex.x >= maxX) {
+	//			maxX = vertex.x;
+	//		}
+	//		if (vertex.y >= maxY) {
+	//			maxY = vertex.y;
+	//		}
+	//		if (vertex.z >= maxZ) {
+	//			maxZ = vertex.z;
+	//		}
+	//		
+	//	}
+
+	//	Vertex minVertex = { minX, minY, minZ };
+	//	Vertex maxVertex = { maxX, maxY, maxZ };
+
+	//	BoundingBox boundingBox = { minVertex, maxVertex };
+
+	//	return boundingBox;
+	//}
+
+	BoundingBox getBoundingBox() const {
+
+		if (vertices.empty()) {
+			throw std::runtime_error("Cannot calculate bounding box of empty geometry");
+		}
+
+		float minX = std::numeric_limits<float>::max();
+		float minY = std::numeric_limits<float>::max();
+		float minZ = std::numeric_limits<float>::max();
+
+		float maxX = std::numeric_limits<float>::lowest();
+		float maxY = std::numeric_limits<float>::lowest();
+		float maxZ = std::numeric_limits<float>::lowest();
+
+		for (const Vertex& vertex : vertices) {
+			minX = std::min(minX, vertex.x);
+			minY = std::min(minY, vertex.y);
+			minZ = std::min(minZ, vertex.z);
+
+			maxX = std::max(maxX, vertex.x);
+			maxY = std::max(maxY, vertex.y);
+			maxZ = std::max(maxZ, vertex.z);
+		}
+
+		Vertex minVertex = { minX, minY, minZ };
+		Vertex maxVertex = { maxX, maxY, maxZ };
+
+		return { minVertex, maxVertex };
 	}
 
 };

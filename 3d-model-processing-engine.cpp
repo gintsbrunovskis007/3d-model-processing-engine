@@ -19,11 +19,16 @@ int main()
 	mesh.addTriangle(0, 1, 2);
 	mesh.addTriangle(3, 4, 5);
 
-	Vertex center = mesh.getCenter();
+	BoundingBox box = mesh.getBoundingBox();
 
-	std::cout << "Center: "
-		<< center.x << ", "
-		<< center.y << ", "
-		<< center.z << '\n';
+	std::cout << "Min: "
+		<< box.minVertex.x << ", "
+		<< box.minVertex.y << ", "
+		<< box.minVertex.z << '\n';
+
+	std::cout << "Max: "
+		<< box.maxVertex.x << ", "
+		<< box.maxVertex.y << ", "
+		<< box.maxVertex.z << '\n';
 		
 }

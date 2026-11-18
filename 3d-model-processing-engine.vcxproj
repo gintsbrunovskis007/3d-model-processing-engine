@@ -142,6 +142,7 @@
     <ClCompile Include="3d-model-processing-engine.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BoundingBox.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="Triangle.h" />
     <ClInclude Include="Vertex.h" />
